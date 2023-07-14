@@ -4,8 +4,15 @@ const port = 3000;
 
 app.use(express.static(__dirname + '/public'));
 
-app.get('/api', (req, res) => {
-  res.send('{}');
+app.use(express.json());
+
+app.post('/api', (req, res) => {
+  const requestBody = req.body;
+
+  // Do something with the JSON data
+  console.log(requestBody);
+
+  res.sendStatus(200);
 });
 
 app.listen(port, () => {
